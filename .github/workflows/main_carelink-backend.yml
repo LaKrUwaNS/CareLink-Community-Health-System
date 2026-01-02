@@ -30,9 +30,6 @@ jobs:
              chmod +x mvnw
              ./mvnw clean package -DskipTests
 
-      - name: List target directory (DEBUG)
-        working-directory: carelink-backend
-        run: ls -la target
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -70,6 +67,7 @@ jobs:
           package: '*.jar'
 
           
+
 
 
 
