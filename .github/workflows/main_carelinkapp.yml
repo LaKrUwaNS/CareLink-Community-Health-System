@@ -21,10 +21,9 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '22.x'
 
       - name: npm install, build, and test
-        working-directory: carelink-frontend
         run: |
           npm install
           npm run build --if-present
@@ -52,10 +51,10 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7F4EA194D7314B61A3A7F68C99196D7B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_31FDA60A705B41649885B9E3EAB5C3B6 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9DF54445C5134BADBDBEEF03D99153FB }}
-          
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_10D03F1BA1FB4250B12C270296F08CB7 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FAFE4880FFA24BF080208D1844815756 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6CD0E77010DA496DB571617FE2DD95F1 }}
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
@@ -63,7 +62,4 @@ jobs:
           app-name: 'CareLinkApp'
           slot-name: 'Production'
           package: .
-
           
-
-
