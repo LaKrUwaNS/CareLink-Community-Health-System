@@ -1,4 +1,4 @@
-import BookAppointment from "./pages/patient/BookAppoinment"
+
 
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <BookAppointment />
+
     </>
   )
 }
