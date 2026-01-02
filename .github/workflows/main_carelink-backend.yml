@@ -26,7 +26,9 @@ jobs:
 
       - name: Build with Maven
         working-directory: carelink-backend
-        run: mvn clean install
+        run: |
+             mvn clean install
+              ./mvnw clean package -DskipTests
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -64,4 +66,5 @@ jobs:
           package: '*.jar'
 
           
+
 
