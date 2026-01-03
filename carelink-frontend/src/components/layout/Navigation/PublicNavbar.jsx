@@ -1,38 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function Navbar() {
+export default function PublicNavbar() {
+    const location = useLocation();
+
+    // Helper to check active state
+    const isActive = (path) => location.pathname === path ? "text-blue-600 font-bold" : "hover:text-blue-600";
+
     return (
-        <nav className="w-full bg-white shadow-sm px-6 py-4">
+        <nav className="w-full bg-white shadow-sm px-6 py-4 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
 
-                {/* Logo Section */}
-                <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold">+</span>
+                {/* 1. Logo Section (Linked to Home) */}
+                <Link to="/" className="flex items-center gap-2">
+                    <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center shadow-blue-200 shadow-sm">
+                        <span className="text-white font-bold text-lg">+</span>
                     </div>
-                    <h1 className="text-lg font-semibold text-gray-900">
-                        Community Health Hub
+                    <h1 className="text-lg font-bold text-slate-900 leading-none">
+                        Community Health
                     </h1>
-                </div>
+                </Link>
 
-                {/* Navigation Links */}
-                <ul className="hidden md:flex items-center gap-8 text-gray-600 font-medium">
-                    <li><Link to="/" className="hover:text-blue-600">Home</Link></li>
-                    <li><Link to="/services" className="hover:text-blue-600">Services</Link></li>
-                    <li><Link to="/health-tips" className="hover:text-blue-600">Health Tips</Link></li>
-                    <li><Link to="/about" className="hover:text-blue-600">About</Link></li>
+                {/* 2. Navigation Links */}
+                <ul className="hidden md:flex items-center gap-8 text-slate-600 font-medium text-sm">
+                    <li><Link to="/" className={isActive("/")}>Home</Link></li>
+                    <li><Link to="/services" className={isActive("/services")}>Services</Link></li>
+                    <li><Link to="/health-tips" className={isActive("/health-tips")}>Health Tips</Link></li>
+                    <li><Link to="/about" className={isActive("/about")}>About</Link></li>
+                    <li><Link to="/contact" className={isActive("/contact")}>Contact</Link></li>
                 </ul>
 
-                {/* Buttons */}
+                {/* 3. Auth Buttons (Now using Link) */}
                 <div className="flex items-center gap-3">
-                    <button className="hidden md:block text-blue-600 font-medium hover:underline">
+                    <Link 
+                        to="/login" 
+                        className="hidden md:block text-slate-600 font-medium hover:text-blue-600 text-sm transition"
+                    >
                         Login
-                    </button>
+                    </Link>
 
-                    <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+                    <Link 
+                        to="/register" 
+                        className="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200"
+                    >
                         Register
-                    </button>
+                    </Link>
                 </div>
             </div>
         </nav>

@@ -13,6 +13,7 @@ import HealthAwareness from "./pages/public/HealthAwareness";
 import Login from "./pages/public/Login";
 import About from "./pages/public/About";
 import Services from "./pages/public/Services";
+import Register from "./pages/public/Register";
 
 // 3. Import Staff Pages
 import StaffDashboard from "./pages/staff/StaffDashboard";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/health-tips" element={<HealthAwareness />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
       </Route>
